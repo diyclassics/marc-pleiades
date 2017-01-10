@@ -11,16 +11,16 @@ gems:
 #baseurl: "/projectname"
 url: ""
 enforce_ssl: ""
-baseurl: "/jekyllBasic"
+baseurl: "/marc-pleiades"
 
 # Title of website
-title: Project Name
+title: Marc-Pleiades Demo for DH 2017
 
 #Default keywords (used if no keywords are specified on a page basis)
-keywords: test1, test2, etc
+keywords: pleiades, discovery, linked open data
 
 # Short description of your site
-desc: Sample Description
+desc: Working prototype of map-based discovery framework for browsing ISAW Library holdings
 
 # --- Navigation bar options --- #
 
@@ -31,34 +31,34 @@ avatar: "/img/avatar.jpg"
 # List of links in the navigation bar
 nav-links:
   Home: ""
-  About Me: "aboutme"
+#  About Me: "aboutme"
   Contact: "contact"  
   
 # --- Footer options --- #
 
 # If the values are empty, they are ignored 
 profile:
-  name: Babji Chetty
-  email: Your-Email
-  facebook: your-fb-id
-  github: your-github-id 
-  twitter: your-twitter-id
-  linkedin: your-linkedin-id
-  stackoverflow: your-stackoverflow-id
+  name: Patrick J. Burns
+  email: pjb311@nyu.edu
+#  facebook: your-fb-id
+#  github: your-github-id 
+#  twitter: your-twitter-id
+#  linkedin: your-linkedin-id
+#  stackoverflow: your-stackoverflow-id
 
 # To display link in the footer section
-pretty-url: "bchetty.com"
+#pretty-url: "bchetty.com"
 
 # --- Misc --- #
 
 # Your Disqus profile (shortname) settings
-disqus: "Your-Disqus-Id"
+#disqus: "Your-Disqus-Id"
 
 # Google Analytics Settings
-google_analytics: "Your-GA-Id"
+#google_analytics: "Your-GA-Id"
 
 # Set these options as you need (For more information, check Jekyll's site)
-timezone: "Europe/Berlin"
+#timezone: "Europe/Berlin"
 markdown: kramdown
 #highlighter: rouge
 kramdown:
