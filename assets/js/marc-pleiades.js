@@ -9,15 +9,15 @@ var map = L.map( 'map', {
     zoomControl: false
 });
 
-L.tileLayer( 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
- attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
- subdomains: ['a','b','c']
-}).addTo( map );
-
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiaXNhd255dSIsImEiOiJBWEh1dUZZIn0.SiiexWxHHESIegSmW8wedQ', {
+ attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+ maxZoom: 10,
+ id: 'isawnyu.map-knmctlkh',
+ accessToken: 'pk.eyJ1IjoiZGl5Y2xhc3NpY3MiLCJhIjoiY2ozdW1uenYzMDFjejJxbzR2enBha3p6byJ9.0llqVkuLQVBkHA-T2G3c2Q'
+ }).addTo(map);
 
 var newControl = new L.Control.ZoomMin()
 map.addControl(newControl)
-
 
 var myURL = jQuery( 'script[src$="marc-pleiades.js"]' ).attr( 'src' ).replace( 'marc-pleiades.js', '' );
 
