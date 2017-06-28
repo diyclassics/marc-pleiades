@@ -36,7 +36,8 @@ L.Control.ZoomMin = L.Control.Zoom.extend({
       return this._map.fitBounds(this.options.minBounds);
     }
 
-    this._map.setZoom(this._map.getMinZoom())
+    this._map.setView([40, 53]).setZoom(this._map.getMinZoom());
+      console.log(this._map.getCenter());
   },
 
   _updateDisabled: function () {

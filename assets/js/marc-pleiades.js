@@ -1,10 +1,10 @@
 // See post: http://asmaloney.com/2015/06/code/clustering-markers-on-leaflet-maps
 
-// Centers map in Athens; zoomed to Mediterranean
+// Sets up map to include widest stretch between Atlantic and Pacific Oceans
 var map = L.map( 'map', {
     center: [40, 53],
     zoom: 3,
-    minZoom: 2,
+    minZoom: 3,
     maxZoom: 8,
     zoomControl: false
 });
