@@ -2,8 +2,8 @@
 
 // Centers map in Athens; zoomed to Mediterranean
 var map = L.map( 'map', {
-    center: [38.063831, 23.556011],
-    zoom: 4,
+    center: [40, 53],
+    zoom: 3,
     minZoom: 2,
     maxZoom: 8,
     zoomControl: false
@@ -46,9 +46,15 @@ for ( var i = 0; i < books.length; ++i )
       '<br/><a href="' + books[i].catalog + '&vid=NYU" target="_blank">View in NYU catalog</a>' +
       pleiadesLink
 
-
-  var m = L.marker( [books[i].lat, books[i].lng], {icon: myIcon} )
+  
+  
+    
+    if (books[i].lat != "" || books[i].lng != "" ) { 
+        var m = L.marker( [books[i].lat, books[i].lng], {icon: myIcon} )
                   .bindPopup( popup );
+    } else {
+        console.log(books[i].book + ' does not have correct lat-long information.')
+    }
 
   markerClusters.addLayer( m );
 }
