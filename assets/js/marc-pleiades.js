@@ -35,23 +35,24 @@ for ( var i = 0; i < books.length; ++i )
 {
     
     if (books[i].pleiades != "") { 
-        var pleiadesLink = '<br/><a href="' + books[i].pleiades + '" target="_blank">' + books[i].pleiades + '</a>';
+        var pleiadesLink = '<br/><b>Pleiades link:</b> <a href="' + books[i].pleiades + '" target="_blank">' + books[i].pleiades + '</a>';
         
     } else {
         pleiadesLink = "";
     }    
     
-  var popup = books[i].book +
-      '<br/>' + books[i]["call-number"] +
-      '<br/><a href="' + books[i].catalog + '&vid=NYU" target="_blank">View in NYU catalog</a>' +
-      pleiadesLink
-
-  
-  
+  var popup = L.popup()
+        .setContent(
+            '<b>Title and author:</b> ' + books[i].book + '<br/>' +
+            '<b>Imprint:</b> ' + books[i].imprint + '<br/>' +
+            '<b>ISAW Shelving Location:</b> ' + books[i]["call-number"] + '<br/>' +
+            '<a href="' + books[i].catalog + '&vid=NYU" target="_blank">View in NYU catalog</a>' + '<br/>' +
+            pleiadesLink + '<br/>' +
+            '<b>Representative coordinates:</b> ' + books[i].lat + ',' + books[i].lng + '</br>')
     
     if (books[i].lat != "" || books[i].lng != "" ) { 
         var m = L.marker( [books[i].lat, books[i].lng], {icon: myIcon} )
-                  .bindPopup( popup );
+                  .bindPopup( popup, {minWidth: 400} );
     } else {
         console.log(books[i].book + ' does not have correct lat-long information.')
     }
