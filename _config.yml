@@ -14,13 +14,13 @@ enforce_ssl: ""
 baseurl: "/marc-pleiades"
 
 # Title of website
-title: ISAW Library Map-Based Discovery Demo for DH2017 Montreal
+title: ISAW Library Map-Based Discovery Demo
 
 #Default keywords (used if no keywords are specified on a page basis)
 keywords: pleiades, discovery, linked open data
 
 # Short description of your site
-desc: Working prototype of map-based discovery framework for browsing ISAW Library holdings
+desc: Clustered map of ISAW Library acquisition between November 2016 and March 2017 using Leaflet & MarkerCluster. Demonstration for Poster Session DH2017 Montreal, 8.7.2017.
 
 # --- Navigation bar options --- #
 
