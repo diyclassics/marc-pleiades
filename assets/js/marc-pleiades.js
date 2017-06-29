@@ -34,20 +34,34 @@ var markerClusters = L.markerClusterGroup();
 for ( var i = 0; i < books.length; ++i )
 {
     
-    if (books[i].pleiades != "") { 
-        var pleiadesLink = '<br/><b>Pleiades link:</b> <a href="' + books[i].pleiades + '" target="_blank">' + books[i].pleiades + '</a>';
+    if (books[i].pleiades_id != "") { 
+        var pleiadesLink = '<br/><b>Pleiades link:</b> <a href="https://pleiades.stoa.org/places/' + books[i].pleiades_id + '" target="_blank">' + books[i].pleiades_name + ' ' + books[i].pleiades_id + '</a>';
         
     } else {
         pleiadesLink = "";
     }    
     
+    if (books[i].series != "") { 
+        var seriesContent = '<b>Series:</b> ' + books[i].series + '<br/>';
+    } else {
+        seriesContent = "";
+    }   
+    
+    
+    bsn = books[i].bsn
+    pad = '000000000'
+    bsn = (pad+bsn).slice(-pad.length);
+    bobcatLink = 'https://library.nyu.edu/persistent/lcn/nyu_aleph' + bsn + '?institution=NYU&persistent';
+    
   var popup = L.popup()
         .setContent(
-            '<b>Title and author:</b> ' + books[i].book + '<br/>' +
+            '<b>Title and author:</b> ' + books[i].title + '<br/>' +
             '<b>Imprint:</b> ' + books[i].imprint + '<br/>' +
-            '<b>ISAW Shelving Location:</b> ' + books[i]["call-number"] + '<br/>' +
-            '<a href="' + books[i].catalog + '&vid=NYU" target="_blank">View in NYU catalog</a>' + '<br/>' +
+            seriesContent +
+            '<b>ISAW Shelving Location:</b> ' + books[i].shelf_location + '<br/>' +    
+            '<a href="' + bobcatLink + '" target="_blank">View in NYU catalog</a>' + '<br/>' +
             pleiadesLink + '<br/>' +
+            '<b>Region:</b> ' + books[i].region + ' <b>Location:</b> ' + books[i].location + '<br/>' +
             '<b>Representative coordinates:</b> ' + books[i].lat + ',' + books[i].lng + '</br>')
     
     if (books[i].lat != "" || books[i].lng != "" ) { 
