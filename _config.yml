@@ -14,7 +14,7 @@ enforce_ssl: ""
 baseurl: "/marc-pleiades"
 
 # Title of website
-title: Marc-Pleiades Demo for DH 2017
+title: ISAW Library Map-Based Discovery Demo for DH2017 Montreal
 
 #Default keywords (used if no keywords are specified on a page basis)
 keywords: pleiades, discovery, linked open data
@@ -41,13 +41,13 @@ profile:
   name: Patrick J. Burns
   email: pjb311@nyu.edu
 #  facebook: your-fb-id
-#  github: your-github-id 
+  github: diyclassics 
 #  twitter: your-twitter-id
 #  linkedin: your-linkedin-id
 #  stackoverflow: your-stackoverflow-id
 
 # To display link in the footer section
-#pretty-url: "bchetty.com"
+# pretty-url: "bchetty.com"
 
 # --- Misc --- #
 
