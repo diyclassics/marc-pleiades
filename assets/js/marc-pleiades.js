@@ -21,52 +21,62 @@ map.addControl(newControl)
 
 var myURL = jQuery( 'script[src$="marc-pleiades.js"]' ).attr( 'src' ).replace( 'marc-pleiades.js', '' );
 
-var myIcon = L.icon({
-  iconUrl: myURL + '../img/pin24.png',
-  iconRetinaUrl: myURL + '../img/pin48.png',
-  iconSize: [29, 24],
-  iconAnchor: [9, 21],
-  popupAnchor: [0, -14]
-});
+// Hardcoded list of possible site types to be used later for selecting the icon
+var vSites = ["Site", "City", "Region", "Broad region", "No precision"];
+var vIcons = [];
+
+// Populate the icon list with the proper choices for each site type
+for ( var i = 0; i < vSites.length; i++ )
+  vIcons.push( L.icon({
+    iconUrl: myURL + '../img/pin24_' + vSites[i] +'.png',
+    iconRetinaUrl: myURL + '../img/pin48_' + vSites[i] +'.png',
+    iconSize: [24, 24],
+    iconAnchor: [12, 12],
+    popupAnchor: [1, 1]
+  }) );
 
 var markerClusters = L.markerClusterGroup();
 
 for ( var i = 0; i < books.length; ++i )
 {
-    
-    if (books[i].pleiades_id != "") { 
+
+    if (books[i].pleiades_id != "") {
         var pleiadesLink = '<br/><b>Pleiades link:</b> <a href="https://pleiades.stoa.org/places/' + books[i].pleiades_id + '" target="_blank">' + books[i].pleiades_name + ' ' + books[i].pleiades_id + '</a>';
-        
+
     } else {
         pleiadesLink = "";
-    }    
-    
-    if (books[i].series != "") { 
+    }
+
+    if (books[i].series != "") {
         var seriesContent = '<b>Series:</b> ' + books[i].series + '<br/>';
     } else {
         seriesContent = "";
-    }   
-    
-    
+    }
+
+
     bsn = books[i].bsn
     pad = '000000000'
     bsn = (pad+bsn).slice(-pad.length);
     bobcatLink = 'https://library.nyu.edu/persistent/lcn/nyu_aleph' + bsn + '?institution=NYU&persistent';
-    
+
   var popup = L.popup()
         .setContent(
             '<b>Title and author:</b> ' + books[i].title + '<br/>' +
             '<b>Imprint:</b> ' + books[i].imprint + '<br/>' +
             seriesContent +
-            '<b>ISAW Shelving Location:</b> ' + books[i].shelf_location + '<br/>' +    
+            '<b>ISAW Shelving Location:</b> ' + books[i].shelf_location + '<br/>' +
             '<a href="' + bobcatLink + '" target="_blank">View in NYU catalog</a>' + '<br/>' +
             pleiadesLink + '<br/>' +
             '<b>Region:</b> ' + books[i].region + ' <b>Location:</b> ' + books[i].location + '<br/>' +
-            '<b>Representative coordinates:</b> ' + books[i].lat + ',' + books[i].lng + '</br>')
-    
-    if (books[i].lat != "" || books[i].lng != "" ) { 
-        var m = L.marker( [books[i].lat, books[i].lng], {icon: myIcon} )
-                  .bindPopup( popup, {minWidth: 400} );
+            '<b>Representative coordinates:</b> ' + books[i].lat + ',' + books[i].lng + '<br/>' +
+            '<b>Degree of Precision:</b> ' + books[i].precision + '<br/>')
+
+    if (books[i].lat != "" || books[i].lng != "" ) {
+        iSite = vSites.indexOf(books[i].precision.trim());
+        if(iSite >= 0) {
+          var m = L.marker( [books[i].lat, books[i].lng], {icon: vIcons[iSite]} )
+                    .bindPopup( popup, {minWidth: 400} );
+        }
     } else {
         console.log(books[i].book + ' does not have correct lat-long information.')
     }
